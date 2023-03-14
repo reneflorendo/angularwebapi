@@ -1,0 +1,35 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-black">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo03" aria-controls="navbarTogglerDemo03" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <a class="navbar-brand" routerLinkActive="active" routerLink="/">Properties</a>
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo03">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" [routerLinkActiveOptions]="{exact:true}" routerLinkActive="active" routerLink="/buy-property">Buy</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/rent-property">Rent</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/add-property">Properties</a>
+        </li>
+      </ul>
+     <div>
+      <ul class="nav nav-bar-nav">
+        <li class="new-item">
+          <a class="nav-link"
+          routerLink="user/register"
+          routerLinkActive="active">Register</a>
+        </li>
+        <li class="new-item">
+          <a class="nav-link"
+          routerLink="user/login"
+          routerLinkActive="active">Login</a>
+        </li>
+      </ul>
+     </div>
+    </div>
+  </div>
+</nav>
