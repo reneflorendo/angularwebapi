@@ -9,7 +9,7 @@
         <div class="form-group col-12">
             <label for="name" class="form-label" >Name</label>
             <input type="text" class="form-control" formControlName="userName">
-            <span *ngIf="!userName.valid && userName.touched"
+            <span *ngIf="!userName.valid && (userName.touched || userSubmitted)"
                   class="error-block"  >
             Please provide name.
             </span>
@@ -18,7 +18,7 @@
         <div class="form-group col-12">
           <label for="email" class="form-label">Email</label>
           <input type="text" class="form-control"  formControlName="email">
-          <span *ngIf="!email.valid && email.touched"
+          <span *ngIf="!email.valid && (email.touched || userSubmitted)"
           class="error-block">
           <span *ngIf="email.hasError('required')" >
             Please provide email.
@@ -33,7 +33,7 @@
         <div class="form-group col-12">
           <label for="password" class="form-label">Password</label>
           <input type="text" class="form-control" formControlName="password">
-          <span *ngIf="!password.valid && password.touched"
+          <span *ngIf="!password.valid && (password.touched || userSubmitted)"
           class="error-block">
           <span *ngIf="password.hasError('required')" >
             Please provide password.
@@ -47,7 +47,7 @@
         <div class="form-group col-12">
           <label for="cpassword" class="form-label">Confirm Password</label>
           <input type="text" class="form-control" formControlName="confirmPassword">
-          <span *ngIf="confirmPassword.touched"
+          <span *ngIf="(confirmPassword.touched || userSubmitted)"
           class="error-block">
           <span *ngIf="!confirmPassword.valid && confirmPassword.hasError('required')" >
             Please provide password.
@@ -60,13 +60,11 @@
         </div>
 
         <div class="form-group col-12">
-          <button  type="submit" onclick="onSubmit()" class="btn btn-primary">Save</button>
+          <button  type="submit"  class="btn btn-primary">Save</button>
           <button type="reset" class="btn btn-secondary m-2">Cancel</button>
         </div>
       </form>
-      Form Values:{{registrationForm.value | json}}
-     rew {{registrationForm.hasError('notmatched')}}
-      Form Status:{{registrationForm.valid}}
+
     </div>
   </div>
   </div>

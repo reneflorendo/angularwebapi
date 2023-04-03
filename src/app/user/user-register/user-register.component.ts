@@ -6,6 +6,8 @@ import { Component, OnInit } from '@angular/core';import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { User } from 'src/app/model/user';
+import { AlertifyService } from 'src/app/services/alertify.service';
 import { UserService } from 'src/app/services/user.service';
 
 
@@ -16,9 +18,10 @@ import { UserService } from 'src/app/services/user.service';
 })
 export class UserRegisterComponent implements OnInit {
 
-  user:any={};
+  user!:User;
   registrationForm:FormGroup={} as FormGroup;
-  constructor(private fb:FormBuilder, private userService:UserService) {
+  userSubmitted:boolean=false;
+  constructor(private fb:FormBuilder, private userService:UserService, private alertify: AlertifyService ) {
 
    }
 
@@ -79,8 +82,25 @@ get confirmPassword(){
 }
 onSubmit(): void{
     console.log(this.registrationForm);
-    this.user=Object.assign(this.user, this.registrationForm.value)
-    this.userService.addUser(this.user);
+    this.userSubmitted=true;
+    if(this.registrationForm.valid){
+      //this.user= Object.assign(this.user, this.registrationForm.value)
+      this.userService.addUser(this.userData());
+      this.registrationForm.reset();
+      this.userSubmitted=false;
+      this.alertify.success("User registered successfully.");
+    }
+    else{
+      this.alertify.error("Error!");
+    }
+  }
+
+  userData():User{
+    return this.user={
+      userName:this.userName.value,
+      email:this.userName.value,
+      password:this.password.value
+    }
   }
 
 }
