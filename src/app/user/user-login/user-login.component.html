@@ -5,20 +5,20 @@
       Login
     </div>
     <div class="card-body">
-      <form>
+      <form #loginForm="ngForm" (ngSubmit)="onLogin(loginForm)">
         <div class="form-group col-12">
             <label for="name" class="form-label" >Name</label>
-            <input type="text" class="form-control" formControlName="userName">
+            <input type="text" class="form-control" required ngModel name="userName">
 
          </div>
 
         <div class="form-group col-12">
-          <label for="email" class="form-label">Password</label>
-          <input type="text" class="form-control"  formControlName="email">
+          <label for="password" class="form-label">Password</label>
+          <input type="password" class="form-control" required ngModel name="password">
 
        </div>
         <div class="form-group col-12">
-          <button  type="submit"  class="btn btn-primary">Login</button>
+          <button [disabled]="!loginForm.valid"  type="submit"  class="btn btn-primary">Login</button>
           <button type="button" class="btn btn-secondary m-2">Cancel</button>
         </div>
       </form>
