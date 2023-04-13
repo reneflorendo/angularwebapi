@@ -35,7 +35,7 @@ export class PropertyListComponent implements OnInit {
 
         if (selectedRoute)
         {
-         this.properties = properties.filter(property => property.TransactionType === this.transactionType);
+         this.properties = properties;//.filter(property => property.TransactionType === this.transactionType);
         }
         else{
           this.properties = properties;
